@@ -6,11 +6,11 @@
 	<title>Eye Analyser</title>
   <link rel="stylesheet" href="../static/css/dashboard.css">
 
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	 -->
+	
 </head>
 <body>
  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -27,8 +27,83 @@
       <a class="nav-link" href="#">Link 3</a>
     </li>
   </ul> -->
-  <a class="nav-link ml-auto btn btn-primary" href="#" data-toggle="modal" data-target="darkModalForm">Register Customer</a>
-<form class="form-inline  ml-auto" action="">
+  <!-- <a class="nav-link ml-auto btn btn-primary" href="#" data-toggle="modal" data-target="exampleModal">Register Customer</a> -->
+<!-- Button trigger modal -->
+<button type="button" class="ml-auto btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Register Customer
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Register</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="form-signin">
+              <div class="form-label-group">
+                <input type="text" id="inputEmail" class="form-control" placeholder="name" required autofocus>
+                <label for="inputEmail">Name</label>
+              </div>
+              <div class="form-label-group">
+                <input type="text" id="inputEmail" class="form-control" placeholder="age" required>
+                <label for="inputEmail">Age</label>
+              </div>
+              <div class="form-label-group">
+                <input type="number" id="inputEmail" class="form-control" placeholder="weight" required>
+                <label for="inputEmail">Weight</label>
+              </div>
+              <div class="form-label-group">
+                <input type="number" id="" class="form-control" placeholder="weight" required>
+                <label for="inputEmail">Height</label>
+              </div>
+              <div class="form-label-group">
+                <input type="text" id="" class="form-control" placeholder="weight" required>
+                <label for="inputEmail">Contact</label>
+              </div>
+              <div class="form-label-group">
+                <label for="inputEmail">Smoker</label>
+              <div class="form-check-inline">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" name="optradio">Option 1
+                </label>
+              </div>
+              <div class="form-check-inline">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" name="optradio">Option 2
+                </label>
+              </div>
+            </div>
+              <div class="row">
+              <div class="form-label-group" style="width: 100%;padding-bottom: 10px">
+                <label for="Remark">Address</label>
+                <textarea class="form-control " rows="3" placeholder="Write here..."></textarea>
+              </div>
+              </div>
+              <div class="form-label-group">
+                <select class="form-control">
+              <option selected>Gender</option>
+              <option value="1">Male</option>
+              <option value="2">Female</option>
+              <option value="3">Others</option>
+            </select>
+              </div>
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<form class="form-inline  ml-auto" action="/patient">
       <input class="form-control mr-sm-2" type="text" placeholder="Customer number..">
       <button class="btn btn-success" type="submit">Search</button>
   </form>

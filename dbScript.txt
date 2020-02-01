@@ -1,0 +1,8 @@
+CREATE TABLE `iAnalyser`.`hospital` ( `ID` INT NOT NULL AUTO_INCREMENT , `name` VARCHAR(100) NOT NULL , `address` VARCHAR(200) NOT NULL , `contact` VARCHAR(10) NOT NULL , `owner` VARCHAR(100) NOT NULL , `username` VARCHAR(100) NOT NULL , `password` VARCHAR(100) NOT NULL , `createdDate` TIMESTAMP NOT NULL , `updatedDate` TIMESTAMP NOT NULL , PRIMARY KEY (`ID`)) ENGINE = InnoDB;
+
+
+CREATE TABLE `ianalyser`.`customers` ( `ID` INT(10) NOT NULL AUTO_INCREMENT , `name` VARCHAR(100) NOT NULL , `age` INT(3) NOT NULL , `gender` INT(1) NOT NULL , `height` DOUBLE(5) NOT NULL , `weight` DOUBLE(5) NOT NULL , `address` VARCHAR(200) NOT NULL , `smokingStatus` BOOLEAN NOT NULL , `contact` VARCHAR(10) NOT NULL , `createdDate` TIMESTAMP NOT NULL , `updatedDate` TIMESTAMP NOT NULL , PRIMARY KEY (`ID`)) ENGINE = InnoDB;
+
+
+
+
