@@ -2,6 +2,15 @@
 <html>
 <head>
 	<title>Eye Analyser</title>
+  <style type="text/css">
+    body {
+  /*background: #007bff;
+  background: linear-gradient(to right, #0062E6, #33AEFF);*/
+  background-image: url('../static/images/back.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+  </style>
 	<link rel="stylesheet" href="../static/css/home.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -10,7 +19,7 @@
 </head>
 <body>
  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <a class="navbar-brand" href="#">iANALYSER</a>
+  <a class="navbar-brand" href="javascript:void(0)">iANALYSER</a>
   <!-- Links -->
   <!-- <ul class="navbar-nav">
     <li class="nav-item">
@@ -31,14 +40,14 @@
         <div class="card card-signin my-5">
           <div class="card-body">
             <h5 class="card-title text-center">Login</h5>
-            <form class="form-signin">
+            <form class="form-signin" action="/home" method="POST">
               <div class="form-label-group">
-                <input type="text" id="inputEmail" class="form-control" placeholder="Username" required autofocus>
+                <input type="text" id="inputEmail" class="form-control" name="username" placeholder="Username" required autofocus>
                 <label for="inputEmail">Username</label>
               </div>
 
               <div class="form-label-group">
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <input type="password" name="password" class="form-control" placeholder="Password" required>
                 <label for="inputPassword">Password</label>
               </div>
 

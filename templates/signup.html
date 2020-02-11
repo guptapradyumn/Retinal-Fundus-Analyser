@@ -31,48 +31,36 @@
         <div class="card card-signin my-5">
           <div class="card-body">
             <h5 class="card-title text-center">Create Account</h5>
-            <form class="form-signin">
+            <form class="form-signin" action="/validate" method="POST">
               <div class="form-label-group">
-                <input type="text" id="inputEmail" class="form-control" placeholder="hospital name" required autofocus>
+                <input type="text" name="hospitalName" class="form-control" placeholder="hospital name" required autofocus>
                 <label for="inputEmail">Hospital Name</label>
               </div>
               <div class="form-label-group">
-                <input type="text" id="inputEmail" class="form-control" placeholder="owner name" required>
+                <input type="text" name="owner" class="form-control" placeholder="owner name" required>
                 <label for="inputEmail">Owner</label>
               </div>
               <div class="form-label-group">
-                <input type="text" id="" class="form-control" placeholder="contact" required>
+                <input type="text" name="contact" class="form-control" placeholder="contact" required>
                 <label for="inputEmail">Contact</label>
               </div>
-              <div class="form-label-group">
-              <div class="form-check-inline">
-                <label class="form-check-label">
-                  <input type="radio" class="form-check-input" name="optradio">Option 1
-                </label>
-              </div>
-              <div class="form-check-inline">
-                <label class="form-check-label">
-                  <input type="radio" class="form-check-input" name="optradio">Option 2
-                </label>
-                <label for="inputEmail">Smoker</label>
-              </div>
-            </div>
+              
               <div class="row">
               <div class="form-label-group" style="width: 100%">
                 <label for="Remark">Address</label>
-                <textarea class="form-control " rows="3" placeholder="Write here..."></textarea>
+                <textarea class="form-control " rows="3"  name="address" required></textarea>
               </div>
               </div>
               <div class="form-label-group">
-                <input type="text" id="" class="form-control" placeholder="Username" required>
+                <input type="text" name="username" class="form-control" placeholder="Username" required>
                 <label for="inputEmail">Username</label>
               </div>
               <div class="form-label-group">
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <input type="password" name="password" class="form-control" placeholder="Password" required>
                 <label for="inputPassword">Password</label>
               </div>
               <div class="form-label-group">
-                <input type="password" id="inputPassword" class="form-control" placeholder="Confirm Password" required>
+                <input type="password" name="confirmPassword" class="form-control" placeholder="Confirm Password" required>
                 <label for="inputPassword">Confirm Password</label>
               </div>
 
@@ -81,6 +69,9 @@
                 <label class="custom-control-label" for="customCheck1">Remember password</label>
               </div> -->
               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Create Account</button>
+              <div>
+                {{ message }}
+              </div>
               <a href="/">Login</a>
             </form>
           </div>
