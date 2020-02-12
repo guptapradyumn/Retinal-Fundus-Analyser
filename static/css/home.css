@@ -3,13 +3,7 @@
   --input-padding-y: .75rem;
 }
 
-body {
-  /*background: #007bff;
-  background: linear-gradient(to right, #0062E6, #33AEFF);*/
-  background-image: url('../images/back.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+
 
 .card-signin {
   border: 0;
