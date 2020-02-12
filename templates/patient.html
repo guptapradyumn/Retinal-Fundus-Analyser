@@ -23,6 +23,9 @@
   </form>
 </nav>
 
+
+
+
 <div class="container-fluid">
   <div clas="row">
     <div class="">
@@ -35,7 +38,93 @@
                         <h3 class="box-title">Retinal Image </h3>
                     </div> <!-- /.box-header -->
                     <div class="box-body">
-                      <div class="row">
+
+                      <div id="demo" class="carousel slide" data-interval="false" data-ride="carousel">
+
+  <!-- Indicators -->
+  <!-- <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+  </ul>
+   -->
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="row" style="text-align: center;
+    background: #989696;">
+        <div class="col-lg-6">
+         <img src="../static/images/image1.jpg" class="img-fluid">
+        </div>
+        <div class="col-lg-6">
+         <img src="../static/images/image1_converted.jpg" class="img-fluid">
+        </div>
+        </div>
+        <div class="carousel-caption caption">
+          <h3>left eye</h3>
+          <p>22/11/2019 11:25AM</p>
+        </div>
+      <!-- <img src="../static/images/image1.jpg" alt="Los Angeles" width="1100" height="500"> -->
+    </div>
+    <div class="carousel-item">
+      <div class="row" style="text-align: center;
+    background: #989696;">
+      <div class="col-lg-6">
+       <img src="../static/images/image1.jpg" class="img-fluid">
+      </div>
+      <div class="col-lg-6">
+       <img src="../static/images/image1_converted.jpg" class="img-fluid">
+      </div>
+      </div>
+      <div class="carousel-caption caption">
+          <h3>left eye</h3>
+          <p>22/11/2019 11:25AM</p>
+        </div>
+      <!-- <img src="../static/images/image1.jpg" alt="Chicago" width="1100" height="500"> -->
+    </div>
+    <div class="carousel-item">
+      <div class="row" style="text-align: center;
+    background: #989696;">
+      <div class="col-lg-6">
+       <img src="../static/images/image1.jpg" class="img-fluid">
+      </div>
+      <div class="col-lg-6">
+       <img src="../static/images/image1_converted.jpg" class="img-fluid">
+      </div>
+      </div>
+      <div class="carousel-caption caption">
+          <h3>left eye</h3>
+          <p>22/11/2019 11:25AM</p>
+        </div>
+      <!-- <img src="../static/images/image1.jpg" alt="New York" width="1100" height="500"> -->
+    </div>
+  </div>
+  
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+</div>
+<!-- <nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item ">
+      <a class="page-link carousel-control-prev" href="#demo" data-slide="prev">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item active">
+      <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link carousel-control-next" href="#demo" data-slide="next">Next</a>
+    </li>
+  </ul>
+</nav> -->
+
+                      <!-- <div class="row">
                       <div class="col-lg-6">
                        <img src="../static/images/image1.jpg" class="img-fluid">
                       </div>
@@ -46,17 +135,8 @@
                       <div class="caption">
                         <h3>left eye</h3>
                         <p>22/11/2019 11:25AM</p>
-                      </div>
+                      </div> -->
                     </div> <!-- /.box-body -->
-                    <nav aria-label="Page navigation example">
-                      <ul class="pagination justify-content-center">
-                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                      </ul>
-                    </nav>
                 </div>
             </div>
         </div>
@@ -75,7 +155,9 @@
                         <h3 class="box-title">Report of Image 1</h3><span class="float-right"><b>22/05/2019</b></span>
                     </div> <!-- /.box-header -->
                     <div class="box-body">
-                        <table class="table table-bordered">
+                      <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                        <div class="carousel-inner">
+                        <table class="table table-bordered carousel-item active">
                             <tbody>
                                 <tr>
                                     <th style="width: 10px">#</th>
@@ -105,14 +187,46 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <table class="table table-bordered carousel-item ">
+                            <tbody>
+                                <tr>
+                                    <th style="width: 10px">#</th>
+                                    <th>Disease</th>
+                                    <th style="width: 40px">Chance</th>
+                                </tr>
+                                <tr>
+                                    <td>1.</td>
+                                    <td>Glaucoma</td>
+                                    
+                                    <td><span class="badge bg-red">55%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2.</td>
+                                    <td>Diabetes Retinopathy</td>
+                                    <td><span class="badge bg-yellow">70%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>3.</td>
+                                    <td>Smoker</td>
+                                    <td><span class="badge bg-light-blue">30%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>4.</td>
+                                    <td>Chance of heart disease</td>
+                                    <td><span class="badge bg-green">90%</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                      </div>
+                      </div>
                     </div> <!-- /.box-body -->
                     <div class="box-footer clearfix">
-                        <ul class="pagination pagination-sm no-margin pull-right">
-                            <li><a href="#" data-abc="true">«</a></li>
+                        <ul class="pagination pagination-sm no-margin justify-content-center">
+                            <li><a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">«</a></li>
                             <li><a href="#" data-abc="true">1</a></li>
                             <li><a href="#" data-abc="true">2</a></li>
                             <li><a href="#" data-abc="true">3</a></li>
-                            <li><a href="#" data-abc="true">»</a></li>
+                            <li><a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">»</a></li>
                         </ul>
                     </div>
                 </div>
@@ -122,10 +236,19 @@
 </div>
 </div>
 </div>
-
+{% if data == 1%}
+<script>
+    $(document).ready(function(){
+        $("#exampleModal").modal('show');
+    });
+</script>
+{% endif %}
 <div class="row justify-content-center">
-      <input type="file" name="retinalImage">
-      <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#exampleModal">Analyse</button>
+  <form action="/upload" method="POST" enctype="multipart/form-data">
+      <input type="file" name="file" required>
+      <!-- <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Analyse</a> -->
+      <button class="btn btn-primary" type="submit" >Analyse</button>
+      </form>
     </div>
     <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

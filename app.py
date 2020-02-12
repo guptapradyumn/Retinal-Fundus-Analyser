@@ -1,5 +1,8 @@
 from flask import Flask, redirect, url_for, request ,render_template
 from flask_mysqldb import MySQL
+import os
+import calendar
+import time
 
 app = Flask(__name__) 
 
@@ -8,6 +11,7 @@ app.config['MYSQL_USER']='root'
 app.config['MYSQL_PASSWORD']=''
 app.config['MYSQL_DB']='ianalyser'
 
+app.config['UPLOAD_DIR']='static/images'
 mysql= MySQL(app)
 
 session={}
@@ -68,6 +72,7 @@ def patient():
 		if request.method=="POST":
 			cusNumber = request.form['cusNumber']
 			cur= mysql.connection.cursor()
+			session['cusNumber']=cusNumber
 			cur.execute("select * from patients where ID= '"+cusNumber+"'")
 			data=cur.fetchall()
 			if(data):
@@ -99,8 +104,17 @@ def register():
 	else:
 		return redirect(url_for('dashboard'))
 
-
-
+@app.route('/upload', methods=['POST'])
+def upload():
+	file = request.files['file']
+	filename = file.filename
+	oldext=filename.split('.')[1]
+	file.save(os.path.join(app.config['UPLOAD_DIR'], filename))
+	newName=str(session['cusNumber'])+str(calendar.timegm(time.gmtime()))
+	os.rename(str(os.path.join(app.config['UPLOAD_DIR']))+'/'+filename, str(os.path.join(app.config['UPLOAD_DIR']))+'/'+newName + '.'+oldext)
+	image_file=str(os.path.join(app.config['UPLOAD_DIR']))+'/'+newName + '.'+oldext
+	# call function here
+	return redirect(url_for('patient'))
 
 if __name__ == '__main__': 
 	app.run(debug = True) 
