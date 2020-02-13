@@ -1,5 +1,9 @@
 from flask import Flask, redirect, url_for, request ,render_template
 from flask_mysqldb import MySQL
+import label_image as model
+import numpy as np
+import cv2
+from PIL import Image 
 
 app = Flask(__name__) 
 
@@ -98,6 +102,25 @@ def register():
 
 	else:
 		return redirect(url_for('dashboard'))
+
+
+@app.route("/upload_image", methods=["GET", "POST"])
+def upload_image():
+
+	if request.method == "POST":
+
+		if request.files:
+			
+			data =request.files['image']
+			img = Image.open(request.files['image'])
+			img = np.array(img)
+			img = cv2.resize(img,(224,224))
+			img = cv2.cvtColor(np.array(img), cv2.COLOR_BGR2RGB)
+			print(model.start(img))
+			return redirect(request.url)
+
+
+	return("none")
 
 
 

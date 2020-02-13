@@ -1,187 +1,231 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
-  
-	<title>Eye Analyser</title>
+
+  <title>Eye Analyser</title>
   <link rel="stylesheet" type="text/css" href="../static/css/patient.css">
-  <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	
+  <link rel="stylesheet" type="text/css"
+    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+
 </head>
+
 <body>
- <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <a class="navbar-brand" href="/home">iANALYSER</a>
-  
-  <!-- <a class="nav-link ml-auto" href="#">Register Customer</a> -->
-<form class="form-inline  ml-auto" action="/patient" method="POST">
+
+
+
+
+
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" href="/home">iANALYSER</a>
+
+    <!-- <a class="nav-link ml-auto" href="#">Register Customer</a> -->
+    <form class="form-inline  ml-auto" action="/patient" method="POST">
       <input class="form-control mr-sm-2" type="text" name="cusNumber" placeholder="Customer number.." required>
       <button class="btn btn-success" type="submit">Search</button>
-  </form>
-</nav>
+    </form>
+  </nav>
 
-<div class="container-fluid">
-  <div clas="row">
-    <div class="">
-      <div class="" id="page-content">
-    <div class="padding">
-        <div class="row justify-content-center">
-            <div class="col-md-10">
+  <div class="container-fluid">
+    <div clas="row">
+      <div class="">
+        <div class="" id="page-content">
+          <div class="padding">
+            <div class="row justify-content-center">
+              <div class="col-md-10">
                 <div class="box">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Retinal Image </h3>
-                    </div> <!-- /.box-header -->
-                    <div class="box-body">
-                      <div class="row">
+                  <div class="box-header with-border">
+                    <h3 class="box-title">Retinal Image </h3>
+                  </div> <!-- /.box-header -->
+                  <div class="box-body">
+                    <div class="row">
                       <div class="col-lg-6">
-                       <img src="../static/images/image1.jpg" class="img-fluid">
+                        <img src="../static/images/image1.jpg" class="img-fluid">
                       </div>
                       <div class="col-lg-6">
-                       <img src="../static/images/image1_converted.jpg" class="img-fluid">
+                        <img src="../static/images/image1_converted.jpg" class="img-fluid">
                       </div>
-                      </div>
-                      <div class="caption">
-                        <h3>left eye</h3>
-                        <p>22/11/2019 11:25AM</p>
-                      </div>
-                    </div> <!-- /.box-body -->
-                    <nav aria-label="Page navigation example">
-                      <ul class="pagination justify-content-center">
-                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                      </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-    
-    </div>
-    <div class="">
-
-<div class="" id="page-content">
-    <div class="">
-        <div class="row justify-content-center">
-            <div class="col-md-10">
-                <div class="box">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Report of Image 1</h3><span class="float-right"><b>22/05/2019</b></span>
-                    </div> <!-- /.box-header -->
-                    <div class="box-body">
-                        <table class="table table-bordered">
-                            <tbody>
-                                <tr>
-                                    <th style="width: 10px">#</th>
-                                    <th>Disease</th>
-                                    <th style="width: 40px">Chance</th>
-                                </tr>
-                                <tr>
-                                    <td>1.</td>
-                                    <td>Glaucoma</td>
-                                    
-                                    <td><span class="badge bg-red">55%</span></td>
-                                </tr>
-                                <tr>
-                                    <td>2.</td>
-                                    <td>Diabetes Retinopathy</td>
-                                    <td><span class="badge bg-yellow">70%</span></td>
-                                </tr>
-                                <tr>
-                                    <td>3.</td>
-                                    <td>Smoker</td>
-                                    <td><span class="badge bg-light-blue">30%</span></td>
-                                </tr>
-                                <tr>
-                                    <td>4.</td>
-                                    <td>Chance of heart disease</td>
-                                    <td><span class="badge bg-green">90%</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div> <!-- /.box-body -->
-                    <div class="box-footer clearfix">
-                        <ul class="pagination pagination-sm no-margin pull-right">
-                            <li><a href="#" data-abc="true">«</a></li>
-                            <li><a href="#" data-abc="true">1</a></li>
-                            <li><a href="#" data-abc="true">2</a></li>
-                            <li><a href="#" data-abc="true">3</a></li>
-                            <li><a href="#" data-abc="true">»</a></li>
-                        </ul>
                     </div>
+                    <div class="caption">
+                      <h3>left eye</h3>
+                      <p>22/11/2019 11:25AM</p>
+                    </div>
+                  </div> <!-- /.box-body -->
+                  <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                      <li class="page-item"><a class="page-link" href="#">1</a></li>
+                      <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                      <li class="page-item"><a class="page-link" href="#">3</a></li>
+                      <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul>
+                  </nav>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-</div>
-</div>
-</div>
 
-<div class="row justify-content-center">
-      <input type="file" name="retinalImage">
-      <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#exampleModal">Analyse</button>
-    </div>
-    <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
       </div>
-      <div class="modal-body">
-        <table class="table table-bordered">
-                            <tbody>
-                                <tr>
-                                    <th style="width: 10px">#</th>
-                                    <th>Disease</th>
-                                    <th style="width: 40px">Chance</th>
-                                </tr>
-                                <tr>
-                                    <td>1.</td>
-                                    <td>Glaucoma</td>
-                                    
-                                    <td><span class="badge bg-red">55%</span></td>
-                                </tr>
-                                <tr>
-                                    <td>2.</td>
-                                    <td>Diabetes Retinopathy</td>
-                                    <td><span class="badge bg-yellow">70%</span></td>
-                                </tr>
-                                <tr>
-                                    <td>3.</td>
-                                    <td>Smoker</td>
-                                    <td><span class="badge bg-light-blue">30%</span></td>
-                                </tr>
-                                <tr>
-                                    <td>4.</td>
-                                    <td>Chance of heart disease</td>
-                                    <td><span class="badge bg-green">90%</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-      <div class="row">
-        <div class="form-group" style="width: 100%">
-          <label for="Remark">Any Remark</label>
-          <textarea class="form-control " rows="3" placeholder="Write here..."></textarea>
+      <div class="">
+
+        <div class="" id="page-content">
+          <div class="">
+            <div class="row justify-content-center">
+              <div class="col-md-10">
+                <div class="box">
+                  <div class="box-header with-border">
+                    <h3 class="box-title">Report of Image 1</h3><span class="float-right"><b>22/05/2019</b></span>
+                  </div> <!-- /.box-header -->
+                  <div class="box-body">
+                    <table class="table table-bordered">
+                      <tbody>
+                        <tr>
+                          <th style="width: 10px">#</th>
+                          <th>Disease</th>
+                          <th style="width: 40px">Chance</th>
+                        </tr>
+                        <tr>
+                          <td>1.</td>
+                          <td>Glaucoma</td>
+
+                          <td><span class="badge bg-red">55%</span></td>
+                        </tr>
+                        <tr>
+                          <td>2.</td>
+                          <td>Diabetes Retinopathy</td>
+                          <td><span class="badge bg-yellow">70%</span></td>
+                        </tr>
+                        <tr>
+                          <td>3.</td>
+                          <td>Smoker</td>
+                          <td><span class="badge bg-light-blue">30%</span></td>
+                        </tr>
+                        <tr>
+                          <td>4.</td>
+                          <td>Chance of heart disease</td>
+                          <td><span class="badge bg-green">90%</span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div> <!-- /.box-body -->
+                  <div class="box-footer clearfix">
+                    <ul class="pagination pagination-sm no-margin pull-right">
+                      <li><a href="#" data-abc="true">«</a></li>
+                      <li><a href="#" data-abc="true">1</a></li>
+                      <li><a href="#" data-abc="true">2</a></li>
+                      <li><a href="#" data-abc="true">3</a></li>
+                      <li><a href="#" data-abc="true">»</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save</button>
-      </div>
     </div>
+
+    <form action="/upload_image" method="POST" enctype="multipart/form-data">
+      <div class="row justify-content-center">
+        <img id="uploadPreview" style="width: 100px; height: 100px;" />
+        <input id="uploadImage" type="file" name="image" onchange="PreviewImage();" />
+        <script type="text/javascript">
+
+          function PreviewImage() {
+            var oFReader = new FileReader();
+            oFReader.readAsDataURL(document.getElementById("uploadImage").files[0]);
+
+            oFReader.onload = function (oFREvent) {
+              document.getElementById("uploadPreview").src = oFREvent.target.result;
+            };
+          };
+
+        </script>
+        <button class="btn btn-primary" type="submit" data-toggle="modal" data-target="#exampleModal">Analyse</button>
+      </div>
+      </form>
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <table class="table table-bordered">
+                <tbody>
+                  <tr>
+                    <th style="width: 10px">#</th>
+                    <th>Disease</th>
+                    <th style="width: 40px">Chance</th>
+                  </tr>
+                  <tr>
+                    <td>1.</td>
+                    <td>Glaucoma</td>
+
+                    <td><span class="badge bg-red">55%</span></td>
+                  </tr>
+                  <tr>
+                    <td>2.</td>
+                    <td>Diabetes Retinopathy</td>
+                    <td><span class="badge bg-yellow">70%</span></td>
+                  </tr>
+                  <tr>
+                    <td>3.</td>
+                    <td>Smoker</td>
+                    <td><span class="badge bg-light-blue">30%</span></td>
+                  </tr>
+                  <tr>
+                    <td>4.</td>
+                    <td>Chance of heart disease</td>
+                    <td><span class="badge bg-green">90%</span></td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="row">
+                <div class="form-group" style="width: 100%">
+                  <label for="Remark">Any Remark</label>
+                  <textarea class="form-control " rows="3" placeholder="Write here..."></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
   </div>
-</div>
-</div>
-  </body>
-  </html>
+
+
+
+
+
+
+
+</body>
+
+</html>
