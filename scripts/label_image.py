@@ -66,10 +66,14 @@ def load_labels(label_file):
   for l in proto_as_ascii_lines:
     label.append(l.rstrip())
   return label
-def start(file_name):
+def start(file_name,graph_file,lable_file):
   # file_name = "tf_files/flower_photos/daisy/3475870145_685a19116d.jpg"
-  model_file = "/home/akshay/Documents/BE_PROJECT/Retinal-Fundus-Analyser/tf_files/retrained_graph.pb"
-  label_file = "/home/akshay/Documents/BE_PROJECT/Retinal-Fundus-Analyser/tf_files/retrained_labels.txt"
+  print("=========================================>>>>")
+  print(lable_file)
+  model_file = str(graph_file)
+  label_file = str(lable_file)
+  
+ 
   input_height = 224
   input_width = 224
   input_mean = 128
@@ -102,9 +106,8 @@ def start(file_name):
   template = "{} (score={:0.5f})"
   l=[]
   for i in top_k:
-    if(results[i]>0.6):
       # return(template.format(labels[i], results[i]))
-      return results[i]
+      l.append((results[i],labels[i]))
 
 
   return l

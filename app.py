@@ -1,16 +1,9 @@
 from flask import Flask, redirect, url_for, request ,render_template
 from flask_mysqldb import MySQL
-<<<<<<< HEAD
-import label_image as model
-import numpy as np
-import cv2
-from PIL import Image 
-=======
 import os
 import calendar
 import time
->>>>>>> ccb1df5634e3c91265db6ee4d2eb19bee79437a7
-
+import scripts.label_image as model
 app = Flask(__name__) 
 
 app.config['MYSQL_HOST']='localhost'
@@ -42,6 +35,7 @@ def validate():
 	cur= mysql.connection.cursor()
 	cur.execute("insert into hospital(name,owner,contact,address,username,password) values('"+hospitalName+"','"+owner+"','"+contact+"','"+address+"','"+username+"','"+password+"')")
 	print(1)
+	mysql.connection.commit()
 	return redirect(url_for('home'))
 
 @app.route('/home',methods = ['POST','GET']) 
@@ -106,6 +100,7 @@ def register():
 		address = request.form['address']
 		cur= mysql.connection.cursor()
 		cur.execute("insert into patients(name,age,contact,address,weight,height,gender,smoking) values('"+hospitalName+"','"+age+"','"+contact+"','"+address+"','"+weight+"','"+height+"','"+gender+"','"+smoking+"')")
+		mysql.connection.commit()
 		return render_template('patient.html')
 
 	else:
@@ -120,7 +115,60 @@ def upload():
 	newName=str(session['cusNumber'])+str(calendar.timegm(time.gmtime()))
 	os.rename(str(os.path.join(app.config['UPLOAD_DIR']))+'/'+filename, str(os.path.join(app.config['UPLOAD_DIR']))+'/'+newName + '.'+oldext)
 	image_file=str(os.path.join(app.config['UPLOAD_DIR']))+'/'+newName + '.'+oldext
-	# call function here
+	result=[]
+	glaucoma_graph="/home/akshay/Documents/BE_PROJECT/Retinal-Fundus-Analyser/tf_files/glaucoma_graph.pb"
+	galucoma_label="/home/akshay/Documents/BE_PROJECT/Retinal-Fundus-Analyser/tf_files/glaucoma_labels.txt"
+	edema_graph="/home/akshay/Documents/BE_PROJECT/Retinal-Fundus-Analyser/tf_files/edema_graph.pb"
+	edema_label="/home/akshay/Documents/BE_PROJECT/Retinal-Fundus-Analyser/tf_files/edema_labels.txt"
+	daibetic_graph="/home/akshay/Documents/BE_PROJECT/Retinal-Fundus-Analyser/tf_files/diabetic_graph.pb"
+	daibetic_label="/home/akshay/Documents/BE_PROJECT/Retinal-Fundus-Analyser/tf_files/diabetic_labels.txt"
+
+	glaucoma_output=model.start(image_file,glaucoma_graph,galucoma_label)
+	edema_output=model.start(image_file,edema_graph,edema_label)
+	daibetic_output=model.start(image_file,daibetic_graph,daibetic_label)
+	for i in glaucoma_output:
+		if i[1]=="glaucoma":
+			result.append(i[0])
+	
+	maxi=0
+	label=""
+	for i in edema_output:
+		if(i[0]>maxi):
+			maxi=i[0]
+			label=i[1]
+	result.append(label)
+
+	maxi1=0
+	label1=""
+	for i in daibetic_output:
+		if(i[0]>maxi1):
+			maxi1=i[0]
+			label1=i[1]
+	result.append(label1)
+	cur= mysql.connection.cursor()
+	query="insert into images(name,patientId) values ( '"+image_file+"',"+session['cusNumber']+")"
+	cur.execute(query)
+	result.append(cur.lastrowid)
+	cur.close()
+	mysql.connection.commit()
+	return render_template('patient.html',data=result)
+
+
+@app.route('/saveData', methods=["POST"])
+def saveData():
+	remark="Not given"
+	glaucoma=request.form['glaucoma']
+	edema=request.form['edema']
+	diabetes=request.form['diabetes']
+	remark=request.form['remark']
+	imageId=request.form['imageId']
+
+	cur= mysql.connection.cursor()
+	query="insert into reports(imageID,glaucoma,edema,diabetes,remark) values ( "+imageId+",'"+glaucoma+"','"+edema+"','"+diabetes+"','"+remark+"')"
+	print(query)
+	cur.execute(query)
+	cur.close()
+	mysql.connection.commit()
 	return redirect(url_for('patient'))
 
 if __name__ == '__main__': 
