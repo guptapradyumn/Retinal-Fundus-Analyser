@@ -1,9 +1,15 @@
 from flask import Flask, redirect, url_for, request ,render_template
 from flask_mysqldb import MySQL
+<<<<<<< HEAD
 import label_image as model
 import numpy as np
 import cv2
 from PIL import Image 
+=======
+import os
+import calendar
+import time
+>>>>>>> ccb1df5634e3c91265db6ee4d2eb19bee79437a7
 
 app = Flask(__name__) 
 
@@ -12,6 +18,7 @@ app.config['MYSQL_USER']='root'
 app.config['MYSQL_PASSWORD']='12345'
 app.config['MYSQL_DB']='ianalyser'
 
+app.config['UPLOAD_DIR']='static/images'
 mysql= MySQL(app)
 
 session={}
@@ -72,6 +79,7 @@ def patient():
 		if request.method=="POST":
 			cusNumber = request.form['cusNumber']
 			cur= mysql.connection.cursor()
+			session['cusNumber']=cusNumber
 			cur.execute("select * from patients where ID= '"+cusNumber+"'")
 			data=cur.fetchall()
 			if(data):
@@ -103,27 +111,17 @@ def register():
 	else:
 		return redirect(url_for('dashboard'))
 
-
-@app.route("/upload_image", methods=["GET", "POST"])
-def upload_image():
-
-	if request.method == "POST":
-
-		if request.files:
-			
-			data =request.files['image']
-			img = Image.open(request.files['image'])
-			img = np.array(img)
-			img = cv2.resize(img,(224,224))
-			img = cv2.cvtColor(np.array(img), cv2.COLOR_BGR2RGB)
-			print(model.start(img))
-			return redirect(request.url)
-
-
-	return("none")
-
-
-
+@app.route('/upload', methods=['POST'])
+def upload():
+	file = request.files['file']
+	filename = file.filename
+	oldext=filename.split('.')[1]
+	file.save(os.path.join(app.config['UPLOAD_DIR'], filename))
+	newName=str(session['cusNumber'])+str(calendar.timegm(time.gmtime()))
+	os.rename(str(os.path.join(app.config['UPLOAD_DIR']))+'/'+filename, str(os.path.join(app.config['UPLOAD_DIR']))+'/'+newName + '.'+oldext)
+	image_file=str(os.path.join(app.config['UPLOAD_DIR']))+'/'+newName + '.'+oldext
+	# call function here
+	return redirect(url_for('patient'))
 
 if __name__ == '__main__': 
 	app.run(debug = True) 
