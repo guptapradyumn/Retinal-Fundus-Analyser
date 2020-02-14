@@ -64,10 +64,10 @@
                           <div class="row" style="text-align: center;
     background: #989696;">
                             <div class="col-lg-6">
-                              <img src="../static/images/image1.jpg" class="img-fluid">
+                              <img src="../{{ data[0][0]}}" class="img-fluid">
                             </div>
                             <div class="col-lg-6">
-                              <img src="../static/images/image1_converted.jpg" class="img-fluid">
+                              <img src="../static/images/converted_{{ data[0][0].split('/')[-1] }}" class="img-fluid">
                             </div>
                           </div>
                           <div class="carousel-caption caption">
@@ -76,14 +76,15 @@
                           </div>
                           <!-- <img src="../static/images/image1.jpg" alt="Los Angeles" width="1100" height="500"> -->
                         </div>
+                        {% for i in range(1,data|length) %}
                         <div class="carousel-item">
                           <div class="row" style="text-align: center;
     background: #989696;">
                             <div class="col-lg-6">
-                              <img src="../static/images/image1.jpg" class="img-fluid">
+                              <img src="../{{ data[i][0]}}" class="img-fluid">
                             </div>
                             <div class="col-lg-6">
-                              <img src="../static/images/image1_converted.jpg" class="img-fluid">
+                              <img src="../static/images/converted_{{ data[i][0].split('/')[-1]  }}" class="img-fluid">
                             </div>
                           </div>
                           <div class="carousel-caption caption">
@@ -92,22 +93,8 @@
                           </div>
                           <!-- <img src="../static/images/image1.jpg" alt="Chicago" width="1100" height="500"> -->
                         </div>
-                        <div class="carousel-item">
-                          <div class="row" style="text-align: center;
-    background: #989696;">
-                            <div class="col-lg-6">
-                              <img src="../static/images/image1.jpg" class="img-fluid">
-                            </div>
-                            <div class="col-lg-6">
-                              <img src="../static/images/image1_converted.jpg" class="img-fluid">
-                            </div>
-                          </div>
-                          <div class="carousel-caption caption">
-                            <h3>left eye</h3>
-                            <p>22/11/2019 11:25AM</p>
-                          </div>
-                          <!-- <img src="../static/images/image1.jpg" alt="New York" width="1100" height="500"> -->
-                        </div>
+                        {% endfor %}
+                        
                       </div>
 
                       <!-- Left and right controls -->
@@ -179,27 +166,25 @@
                               <td>1.</td>
                               <td>Glaucoma</td>
 
-                              <td><span class="badge bg-red">55%</span></td>
+                              <td><span class="badge bg-red">{{ data[0][1] }}</span></td>
                             </tr>
                             <tr>
                               <td>2.</td>
                               <td>Diabetes Retinopathy</td>
-                              <td><span class="badge bg-yellow">70%</span></td>
+                              <td><span class="badge bg-yellow">{{ data[0][2] }}</span></td>
                             </tr>
                             <tr>
                               <td>3.</td>
-                              <td>Smoker</td>
-                              <td><span class="badge bg-light-blue">30%</span></td>
+                              <td>Edema</td>
+                              <td><span class="badge bg-light-blue">{{ data[0][3] }}</span></td>
                             </tr>
-                            <tr>
-                              <td>4.</td>
-                              <td>Chance of heart disease</td>
-                              <td><span class="badge bg-green">90%</span></td>
-                            </tr>
+                           
                           </tbody>
                         </table>
+                        {% for i in range(1,data|length) %}
                         <table class="table table-bordered carousel-item ">
-                          <tbody>
+                          <tbody style="width: 100%;
+                          display: inline-table;">
                             <tr>
                               <th style="width: 10px">#</th>
                               <th>Disease</th>
@@ -209,25 +194,22 @@
                               <td>1.</td>
                               <td>Glaucoma</td>
 
-                              <td><span class="badge bg-red">55%</span></td>
+                              <td><span class="badge bg-red">{{ data[i][1] }}</span></td>
                             </tr>
                             <tr>
                               <td>2.</td>
                               <td>Diabetes Retinopathy</td>
-                              <td><span class="badge bg-yellow">70%</span></td>
+                              <td><span class="badge bg-yellow">{{ data[i][2] }}</span></td>
                             </tr>
                             <tr>
                               <td>3.</td>
-                              <td>Smoker</td>
-                              <td><span class="badge bg-light-blue">30%</span></td>
+                              <td>edema</td>
+                              <td><span class="badge bg-light-blue">{{ data[i][3] }}</span></td>
                             </tr>
-                            <tr>
-                              <td>4.</td>
-                              <td>Chance of heart disease</td>
-                              <td><span class="badge bg-green">90%</span></td>
-                            </tr>
+                            
                           </tbody>
                         </table>
+                        {% endfor %}
                       </div>
                     </div>
                   </div> <!-- /.box-body -->
@@ -249,7 +231,7 @@
         </div>
       </div>
     </div>
-    {% if data|length>0 %}
+    {% if data_analyzed|length>0 %}
 
     <script>
       $(document).ready(function () {
@@ -265,7 +247,7 @@
       </form>
     </div>
     <!-- Modal -->
-    {% if data|length >0%}
+    {% if data_analyzed|length >0%}
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -289,17 +271,17 @@
                   <td>1.</td>
                   <td>Glaucoma</td>
 
-                  <td><span class="badge bg-red">{{data[0]}}</span></td>
+                  <td><span class="badge bg-red">{{data_analyzed[0]}}</span></td>
                 </tr>
                 <tr>
                   <td>2.</td>
                   <td>Edema</td>
-                  <td><span class="badge bg-yellow">type {{data[1]}}</span></td>
+                  <td><span class="badge bg-yellow">type {{data_analyzed[1]}}</span></td>
                 </tr>
                 <tr>
                   <td>3.</td>
                   <td>Diabetes Retinopathy</td>
-                  <td><span class="badge bg-light-blue">type {{data[2]}}</span></td>
+                  <td><span class="badge bg-light-blue">type {{data_analyzed[2]}}</span></td>
                 </tr>
 
               </tbody>
@@ -312,10 +294,10 @@
                 </div>
               </div>
               <div>
-                <input type="hidden" name="glaucoma" value="{{ data[0] }}">
-                <input type="hidden" name="edema" value="{{ data[1] }}">
-                <input type="hidden" name="diabetes" value="{{ data[2] }}">
-                <input type="hidden" name="imageId" value="{{ data[3] }}">
+                <input type="hidden" name="glaucoma" value="{{ data_analyzed[0] }}">
+                <input type="hidden" name="edema" value="{{ data_analyzed[1] }}">
+                <input type="hidden" name="diabetes" value="{{ data_analyzed[2] }}">
+                <input type="hidden" name="imageId" value="{{ data_analyzed[3] }}">
 
 
               </div>

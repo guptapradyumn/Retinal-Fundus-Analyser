@@ -4,6 +4,7 @@ import os
 import calendar
 import time
 import scripts.label_image as model
+import skel as sk
 app = Flask(__name__) 
 
 app.config['MYSQL_HOST']='localhost'
@@ -76,13 +77,22 @@ def patient():
 			session['cusNumber']=cusNumber
 			cur.execute("select * from patients where ID= '"+cusNumber+"'")
 			data=cur.fetchall()
-			if(data):
-				return render_template('patient.html')
+			cur.execute("SELECT images.name , reports.glaucoma , reports.diabetes , reports.edema , reports.remark from images, reports where images.ID = reports.imageID and images.patientID="+session['cusNumber'])
+			data1=cur.fetchall()
+			#print(data2)
+			if(data or data1):
+				return render_template('patient.html',data=data1)
 			else:
 				return redirect(url_for('dashboard'))
 
 		else:
-			return render_template('patient.html')
+			cusNumber=session['cusNumber']
+			cur= mysql.connection.cursor()
+			cur.execute("select * from patients where ID= '"+cusNumber+"'")
+			data=cur.fetchall()
+			cur.execute("SELECT images.name , reports.glaucoma , reports.diabetes , reports.edema , reports.remark from images, reports where images.ID = reports.imageID and images.patientID="+session['cusNumber'])
+			data1=cur.fetchall()
+			return render_template('patient.html',data=data1)
 
 	else:
 		return redirect(url_for('home'))
@@ -116,6 +126,7 @@ def upload():
 	os.rename(str(os.path.join(app.config['UPLOAD_DIR']))+'/'+filename, str(os.path.join(app.config['UPLOAD_DIR']))+'/'+newName + '.'+oldext)
 	image_file=str(os.path.join(app.config['UPLOAD_DIR']))+'/'+newName + '.'+oldext
 	result=[]
+	sk.convert(image_file)
 	glaucoma_graph="/home/akshay/Documents/BE_PROJECT/Retinal-Fundus-Analyser/tf_files/glaucoma_graph.pb"
 	galucoma_label="/home/akshay/Documents/BE_PROJECT/Retinal-Fundus-Analyser/tf_files/glaucoma_labels.txt"
 	edema_graph="/home/akshay/Documents/BE_PROJECT/Retinal-Fundus-Analyser/tf_files/edema_graph.pb"
@@ -149,9 +160,16 @@ def upload():
 	query="insert into images(name,patientId) values ( '"+image_file+"',"+session['cusNumber']+")"
 	cur.execute(query)
 	result.append(cur.lastrowid)
-	cur.close()
+	
 	mysql.connection.commit()
-	return render_template('patient.html',data=result)
+
+	cusNumber=session['cusNumber']
+	cur.execute("select * from patients where ID= '"+cusNumber+"'")
+	data=cur.fetchall()
+	cur.execute("SELECT images.name , reports.glaucoma , reports.diabetes , reports.edema , reports.remark from images, reports where images.ID = reports.imageID and images.patientID="+session['cusNumber'])
+	data1=cur.fetchall()
+	
+	return render_template('patient.html',data_analyzed=result,data=data1)
 
 
 @app.route('/saveData', methods=["POST"])
